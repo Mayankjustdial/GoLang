@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 )
 
@@ -18,7 +18,7 @@ func main() {
 
 	defer res.Body.Close() // caller responsibility to close the connection
 
-	databytes, err := ioutil.ReadAll(res.Body)
+	databytes, err := io.ReadAll(res.Body)
 	checkNilErr(err)
 
 	content := string(databytes)
